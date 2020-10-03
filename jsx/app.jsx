@@ -17,8 +17,7 @@ function render(listOfObjs) {
 }
 
 function Title() {
-  // TODO: put this user-facing message in 
-  // an application stirng resource
+  // TODO: put this user-facing message in an application stirng resource
   // https://stackoverflow.com/questions/39758136/render-html-string-as-real-html-in-a-react-component
 
   return <h1 class='title'>Covid-19 Statistics</h1>;
