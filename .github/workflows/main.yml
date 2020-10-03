@@ -27,3 +27,7 @@ jobs:
         run: |
           npm install
           npm run-script build
+          git config --global user.name $GITHUB_ACTOR
+          git add js/app.js
+          git commit -m "check-in generated file"
+          git push
