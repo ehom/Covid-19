@@ -19,7 +19,7 @@ function Title() {
 
   return React.createElement(
     'h1',
-    { 'class': 'title' },
+    { className: 'title' },
     'Covid-19 Statistics'
   );
 }
@@ -79,20 +79,20 @@ function Summary(props) {
 
   return React.createElement(
     'div',
-    { 'class': 'alert alert-danger' },
+    { className: 'alert alert-danger' },
     React.createElement(
       'p',
       null,
       'There are ',
       React.createElement(
         'span',
-        { 'class': 'display-4' },
+        { className: 'display-4' },
         summary.totalCases
       ),
       ' reported cases. ',
       React.createElement(
         'span',
-        { 'class': 'display-4' },
+        { className: 'display-4' },
         summary.totalDeaths
       ),
       ' people have died from Covid-19.'
@@ -110,7 +110,7 @@ function ReportDate() {
 
   return React.createElement(
     'p',
-    { 'class': 'mb-3' },
+    { className: 'mb-3' },
     reportDate
   );
 }
@@ -141,17 +141,17 @@ function Statistics(props) {
         ),
         React.createElement(
           'td',
-          { 'class': 'number-col' },
+          { className: 'number-col' },
           numFormatter.format(obj.case)
         ),
         React.createElement(
           'td',
-          { 'class': 'number-col' },
+          { className: 'number-col' },
           numFormatter.format(obj.death)
         ),
         React.createElement(
           'td',
-          { 'class': 'number-col' },
+          { className: 'number-col' },
           percentFormatter.format(obj.death / obj.case)
         )
       );
@@ -166,7 +166,7 @@ function Statistics(props) {
     React.createElement(Summary, { data: listOfObjs }),
     React.createElement(
       'table',
-      { 'class': 'table table-striped table-hover table-responsive-sm' },
+      { className: 'table table-striped table-hover table-responsive-sm' },
       React.createElement(
         'thead',
         null,
@@ -177,17 +177,17 @@ function Statistics(props) {
         ),
         React.createElement(
           'th',
-          { scope: 'col', 'class': 'number-col' },
+          { scope: 'col', className: 'number-col' },
           'Cases'
         ),
         React.createElement(
           'th',
-          { scope: 'col', 'class': 'number-col' },
+          { scope: 'col', className: 'number-col' },
           'Deaths'
         ),
         React.createElement(
           'th',
-          { scope: 'col', 'class': 'number-col' },
+          { scope: 'col', className: 'number-col' },
           '%'
         )
       ),
