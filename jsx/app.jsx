@@ -20,7 +20,7 @@ function Title() {
   // TODO: put this user-facing message in an application stirng resource
   // https://stackoverflow.com/questions/39758136/render-html-string-as-real-html-in-a-react-component
 
-  return <h1 class='title'>Covid-19 Statistics</h1>;
+  return <h1 className='title'>Covid-19 Statistics</h1>;
 }
 
 function Summary(props) {
@@ -55,8 +55,8 @@ function Summary(props) {
   // an application stirng resource
 
   return (
-    <div class="alert alert-danger">
-      <p>There are <span class="display-4">{summary.totalCases}</span> reported cases. <span class="display-4">{summary.totalDeaths}</span> people have died from Covid-19.</p>
+    <div className="alert alert-danger">
+      <p>There are <span className="display-4">{summary.totalCases}</span> reported cases. <span className="display-4">{summary.totalDeaths}</span> people have died from Covid-19.</p>
     </div>
   );
 }
@@ -69,7 +69,7 @@ function ReportDate() {
     'year': 'numeric'
   }).format(new Date(document.lastModified));
   
-  return <p class="mb-3">{reportDate}</p>;
+  return <p className="mb-3">{reportDate}</p>;
 }
 
 function Statistics(props) {
@@ -91,9 +91,9 @@ function Statistics(props) {
       return (
         <tr>
           <td>{obj.state}</td>
-          <td class="number-col">{numFormatter.format(obj.case)}</td>
-          <td class="number-col">{numFormatter.format(obj.death)}</td>
-          <td class="number-col">{percentFormatter.format(obj.death / obj.case)}</td>
+          <td className="number-col">{numFormatter.format(obj.case)}</td>
+          <td className="number-col">{numFormatter.format(obj.death)}</td>
+          <td className="number-col">{percentFormatter.format(obj.death / obj.case)}</td>
         </tr>
       );
     });
@@ -104,12 +104,12 @@ function Statistics(props) {
   return (
     <React.Fragment>
       <Summary data={listOfObjs}/>
-      <table class="table table-striped table-hover table-responsive-sm">
+      <table className="table table-striped table-hover table-responsive-sm">
         <thead>
           <th scope="col">State</th>
-          <th scope="col" class="number-col">Cases</th>
-          <th scope="col" class="number-col">Deaths</th>
-          <th scope="col" class="number-col">%</th>
+          <th scope="col" className="number-col">Cases</th>
+          <th scope="col" className="number-col">Deaths</th>
+          <th scope="col" className="number-col">%</th>
         </thead>
         <tbody>{tableRows}</tbody>
       </table>
