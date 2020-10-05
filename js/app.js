@@ -1,30 +1,42 @@
-var URL = 'https://raw.githubusercontent.com/ehom/external-data/master/finnhub/covid.json';
 var userLanguage = navigator.language;
+var JSON_DATA = 'https://raw.githubusercontent.com/ehom/external-data/master/finnhub/covid.json';
 
-$.getJSON(URL, function (json_data) {
-  render(json_data);
+$.getJSON(JSON_DATA, function (json_data) {
+  ReactDOM.render(React.createElement(Report, { data: json_data }), document.getElementById('root'));
 });
 
-function render(listOfObjs) {
-  ReactDOM.render(React.createElement(Title, null), document.getElementById('title'));
+var Report = function Report(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'div',
+      { className: 'jumbotron pb-3' },
+      React.createElement(Title, null),
+      React.createElement(ReportDate, null)
+    ),
+    React.createElement(
+      'div',
+      { className: 'container mb-5' },
+      React.createElement(Statistics, { data: props.data })
+    ),
+    React.createElement('hr', null)
+  );
+};
 
-  ReactDOM.render(React.createElement(ReportDate, null), document.getElementById('date'));
+// TODO: put this user-facing message in an application string resource
+// https://stackoverflow.com/questions/39758136/render-html-string-as-real-html-in-a-react-component
 
-  ReactDOM.render(React.createElement(Statistics, { data: listOfObjs }), document.getElementById('parent'));
-}
-
-function Title() {
-  // TODO: put this user-facing message in an application stirng resource
-  // https://stackoverflow.com/questions/39758136/render-html-string-as-real-html-in-a-react-component
-
+var Title = function Title() {
   return React.createElement(
     'h1',
     { className: 'title' },
     'Covid-19 Statistics'
   );
-}
+};
 
-function Summary(props) {
+var Summary = function Summary(props) {
+  // TODO -- there should be a better way to do this
   var summarize = function summarize(data) {
     var totalCases = 0;
     var totalDeaths = 0;
@@ -83,24 +95,25 @@ function Summary(props) {
     React.createElement(
       'p',
       null,
-      'There are ',
+      'Of ',
       React.createElement(
         'span',
         { className: 'display-4' },
         summary.totalCases
       ),
-      ' reported cases. ',
+      ' reported cases,',
       React.createElement(
         'span',
-        { className: 'display-4' },
+        { 'class': 'display-4' },
+        ' ',
         summary.totalDeaths
       ),
       ' people have died from Covid-19.'
     )
   );
-}
+};
 
-function ReportDate() {
+var ReportDate = function ReportDate() {
   var reportDate = new Intl.DateTimeFormat(userLanguage, {
     'weekday': 'long',
     'day': 'numeric',
@@ -113,9 +126,9 @@ function ReportDate() {
     { className: 'mb-3' },
     reportDate
   );
-}
+};
 
-function Statistics(props) {
+var Statistics = function Statistics(props) {
   console.debug(props);
 
   var listOfObjs = props.data;
@@ -166,7 +179,7 @@ function Statistics(props) {
     React.createElement(Summary, { data: listOfObjs }),
     React.createElement(
       'table',
-      { className: 'table table-striped table-hover table-responsive-sm' },
+      { 'class': 'table table-striped table-hover table-responsive-sm' },
       React.createElement(
         'thead',
         null,
@@ -198,4 +211,4 @@ function Statistics(props) {
       )
     )
   );
-}
+};
