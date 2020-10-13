@@ -72,7 +72,7 @@ const ReportDate = () => {
     'day': 'numeric',
     'month': 'long',
     'year': 'numeric'
-  }).format(new Date(document.lastModified));
+  }).format(new Date());
   
   return <p className="mb-3">{reportDate}</p>;
 };
