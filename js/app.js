@@ -119,7 +119,7 @@ var ReportDate = function ReportDate() {
     'day': 'numeric',
     'month': 'long',
     'year': 'numeric'
-  }).format(new Date(document.lastModified));
+  }).format(new Date());
 
   return React.createElement(
     'p',
